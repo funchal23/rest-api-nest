@@ -11,22 +11,24 @@ export class JovensService {
   }
 
   create(createJovenDto: CreateJovenDto) {
-    return 'This action adds a new joven';
+    return this.model.create(createJovenDto);
   }
 
   findAll() {
-    return `This action returns all jovens`;
+    return this.model.findAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} joven`;
+  findOne(id: string) {
+    return this.model.findByPk(id);
   }
 
-  update(id: number, updateJovenDto: UpdateJovenDto) {
-    return `This action updates a #${id} joven`;
+  async update(id: string, updateJovenDto: UpdateJovenDto) {
+    const joven = await this.model.findByPk(id);
+    return joven.update(updateJovenDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} joven`;
+  async remove(id: string) {
+    const joven = await this.model.findByPk(id);
+    joven.destroy();
   }
 }

@@ -19,16 +19,16 @@ export class JovensController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.jovensService.findOne(+id);
+    return this.jovensService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateJovenDto: UpdateJovenDto) {
-    return this.jovensService.update(+id, updateJovenDto);
+    return this.jovensService.update(id, updateJovenDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.jovensService.remove(+id);
+    return this.jovensService.remove(id);
   }
 }
